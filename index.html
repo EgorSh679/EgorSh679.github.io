@@ -1,0 +1,788 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <link rel="shortcut icon" href="img/icon2.ico" type="image/png">
+    <meta charset="UTF-8">
+    <title>Нейросети нашего времени</title>
+    <meta name="description" content="Описание страницы" />
+    <!-- Просто не трогай -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.timelinr-0.9.54.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"  type="text/javascript"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/mediaelement-and-player.min.js"></script>
+
+    <link rel="stylesheet" href="animate.min.css">
+    <!-- Фикс работы анимации появления-->
+    <script src="wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <!-- Для работы спойлера-->
+    <script type="text/javascript">
+      $(function(){
+       $('.spoiler').hide();
+      $('.spoiler-link').on('click', function(e) {
+      var idSpoiler = $(this).attr('href'),
+       classSelect = 'spoiler-link--active';
+      $(this).toggleClass(classSelect);
+      $(idSpoiler).slideToggle(200);
+      e.preventDefault();
+       });
+      });
+    </script>
+    <!-- Для прокрутки вверх -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+       
+      $(window).scroll(function(){
+      if ($(this).scrollTop() > 100) {
+      $('.scrollup').fadeIn();
+      } else {
+      $('.scrollup').fadeOut();
+      }
+      });
+       
+      $('.scrollup').click(function(){
+      $("html, body").animate({ scrollTop: 0 }, 600);
+      return false;
+      });
+       
+      });
+    </script>
+    <!-- Для разворачивающегося спойлера -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".spoilers-menu").click(function(){
+          $(".primer").toggleClass("primer2"); return false;
+        });
+      });
+    </script>
+    <style type="text/css">
+      /* Мой кусок кода */
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      p{
+        color: #EFECF0;
+      }
+      a{
+        color: #CFCCCF;
+        font-family: arial;
+        font-size: 150%;
+        text-decoration: none;
+        transition: 0.5s linear;
+      }
+      a:hover,
+      a.selected {
+        color: #11345C;
+      }
+      h1 {
+        color: #FFFFFF;
+      }
+
+      h2 {
+        color: #FFFFFF;
+        margin-bottom: 0;
+      }
+      .head {
+        display: block;
+        height: auto;
+        width: 100%;
+        padding: 0 auto;
+        margin: 0 auto;
+        padding-top: 20%;
+        margin-bottom: 18%;
+      }
+      .head_mid {
+        width: 60%;
+        height: 50% auto;
+        margin-left: 12%;
+        float: left;
+        background-color: #4F4A4A;
+        position: absolute;
+        z-index: 2;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        padding-top: 1%;
+        padding-left: 10%;
+        padding-right: 5%;
+      }
+      .video1 {
+        top: 0; left: 0;
+        position: absolute;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: fill;
+        margin-bottom: 2%;
+      }
+      .zagolovok1 {
+        float: left;
+        width: 40%;
+        font-size: 260%;
+      }
+      .text1 {
+        margin-top: 8%;
+        float: right;
+        width: 40%;
+        font-size: 120%;
+      }
+      .zagolovok2 {
+        font-size: 260%;
+      }
+      .text2 {
+        font-size: 100%;
+      }
+      .text4 {
+        font-size: 100%;
+        font-size: calc(61vw / 50);
+        float: left;
+        max-width: 90%;
+      }
+      .video3 {
+        width: 100%;
+        object-fit: fill;
+        transition: 2s;
+      }
+      .video3:hover {
+        transform: scale(1.5);
+      }
+      .video4 {
+        width: 100%;
+        object-fit: fill;
+        transition: 2s;
+      }
+      .video4:hover {
+        transform: scale(1.4);
+      }
+      .text3 {
+        font-size: 100%;
+        margin-left: 3%;
+        font-size: calc(61vw / 50);
+      }
+      .anchor {
+        width: 100% auto;
+        height: 70px auto;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        padding-left: 10%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+      }
+      .anchor_link {
+        border-left: 5px solid #212161;
+        padding-left: 2%;
+        margin-left: 2%;
+      }
+      .link {
+        border-left: 5px solid #212161;
+        padding-left: 2%;
+        margin-left: 2%;
+        font-size: 120%;
+      }
+      .DopText {
+        width: 100% auto;
+        height: auto;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        margin-top: 5%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 1%;
+        padding-bottom: 2%;
+      }
+      .primer {
+        padding-top: 3%;
+        width: 100% auto;
+        padding-left: 2.5%;
+        margin-bottom: 40%;
+        transition: 1s;
+      }
+      .primer2 {
+        margin-bottom: 105%;
+      }
+      .block {
+        width: 25%;
+        float: left;
+        margin-left: 6%;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+      }
+      .block2 {
+        width: 30%;
+        margin-left: 15%;
+        margin-top: 2%;
+        padding-left: 40%;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        float: left;
+        position: relative;
+        overflow: hidden;
+      }
+      .block2 iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        border-width: 0;
+        outline-width: 0;
+      }
+      .picture {
+        width: 100%;
+        object-fit: fill;
+      }
+      .mid {
+        width: 100% auto;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 5%;
+        height: auto;
+        position: relative;
+        background: rgba(0,0,0,0.6);
+      }
+
+
+      /* ДЛЯ РАБОТЫ ТАЙМПЛАЙНА */
+      /* Добавление отступов к элементу с классом timeline */
+      .timeline {
+        padding-bottom: 1rem;
+        position: relative;
+      }
+      /* Создание вертикальной линии с помощью псевдоэлеметна */
+      .timeline::before {
+        content: "";
+        position: absolute;
+        width: .125rem;
+        height: 100%;
+        background-color: #dee2e6;
+        left: 2rem;
+        top: 0;
+      }
+      /* добавление нижнего отступа и левого поля для элементов с классом timeline-wrapper */
+      .timeline-wrapper {
+        margin-bottom: 1rem;
+        padding-left: 4rem;
+      }
+      /* убирание у последнего элемента .timeline-wrapper нижнего отступа */
+      .timeline-wrapper:last-child {
+        margin-bottom: 0;
+      }
+      /* стили для элементов таймлайна */
+      .timeline-item {
+        position: relative;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        color: #fff;
+        padding: .825rem;
+        border-radius: .25rem;
+      }
+      .timeline-item2 {
+        position: relative;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        color: #fff;
+        padding: .825rem;
+        border-radius: .25rem;
+      }
+      /* добавление контрольных точек на вертикальную линию */
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: .75rem;
+        height: .75rem;
+        background-color: #11345C;
+        border-radius: .4rem;
+        left: -2.3125rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      /* добавление стрелочек к элементам таймлайна */
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 1rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        border-right: 1rem solid #4F4A4A;
+        left: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .timeline-item2:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 1rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        border-right: 1rem solid #4F4A4A;
+        left: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      /* стили для блока, в котором будет отображаться название статьи */
+      .timeline-item-header {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 2%;
+      }
+      /* стили для блока, в который будет выводиться описание статьи */
+      .timeline-item-description {
+        display: block;
+        color: rgba(255,255,255,.8);
+        line-height: 1.7;
+      }
+      /* для адаптивности (стили для больших экранов) */
+      @media (min-width: 576px) {
+        /* для вывода вертикальной линии по центру */
+        .timeline::before {
+          left: 50%;
+        }
+        /* стили для нечётных элементов с классом timeline-wrapper */
+        .timeline-wrapper:nth-child(odd) {
+          padding-right: 2rem;
+          margin-right: 50%;
+          padding-left: 15px;
+          margin-bottom: 2%;
+        }
+        /* стили для чётных элементов с классом timeline-wrapper */
+        .timeline-wrapper:nth-child(even) {
+          padding-left: 2rem;
+          margin-left: 50%;
+          margin-bottom: 2%;
+        }
+        /* стили для псевдоэлементов ::before элементов таймлайна, расположенных в нечётных контейнерах */
+        .timeline-wrapper:nth-child(odd) .timeline-item::before {
+          right: -2.5rem;
+          left: unset;
+       }
+        /* стили для псевдоэлементов ::after элементов таймлайна, расположенных в нечётных контейнерах */
+        .timeline-wrapper:nth-child(odd) .timeline-item::after {
+          border-left: 1rem solid #4F4A4A;
+          border-right: none;
+          left: unset;
+          right: -1rem;
+        }
+      }
+
+      /* Мой кусок кода */
+      .zagolovok3 {
+        width: 38%;
+        height: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #4F4A4A;
+        box-shadow: 0.4em 0.4em 5px rgba(14,13,15,0.5);
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-left: 2%;
+        padding-right: 2%;
+        text-align: center;
+      }
+
+      /* Для работы спойлера */
+      .spoilers-menu {
+        margin-top: 2%;
+        float: left;
+        margin-left: 38%;
+      }
+      .spoiler-link {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        background: #4F4A4A;
+        padding: 2% 4%;
+        -webkit-transition: all 0.6s ease;
+        transition: all 0.6s ease;
+      }
+      .spoiler-link + .spoiler-link {
+        margin-left: 5px;
+      }
+      .spoiler-link--active {
+        background: #4F4A4A;
+        text-shadow: 0 1px 0 #black;
+      }
+      .spoiler {
+        color: #907c6b;
+        float: left;
+        padding-top: 2%;
+        margin-top: 2%;
+        padding-bottom: 2%;
+        width: 95%;
+        background-color: #181619;
+        box-shadow: inset 0 0 6px #070607;
+      }
+      .spoiler__title {
+        margin-top: 0;
+        font-weight: 200;
+        color: #b63333;
+      }
+      .spoiler-link::-webkit-details-marker{display:none;}
+      .spoiler-link::-moz-list-bullet{list-style-type:none;}
+      .spoiler-link::marker{display:none;} 
+      .spoiler-link {
+         padding: .3em .6em .3em 1.5em;
+         display:inline-block;
+         font-size:1.4em;
+         cursor: pointer;
+         position: relative;
+      }
+      .spoiler-link:before {  
+        left: .3em;
+        top: .4em;
+        background: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjM0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC41OSAxNi4zNGw0LjU4LTQuNTktNC41OC00LjU5TDEwIDUuNzVsNiA2LTYgNnoiLz48L3N2Zz4=") no-repeat 50% 50% / 1em 1em;
+        width: 1em;
+        height: 1em;  
+        content: "";
+        position: absolute;
+        transition: transform .5s;
+      }
+      .spoiler-link::before::focus {  
+        transform: rotateZ(90deg);
+      }
+      .spoiler-link ~ * {
+         padding:0 1em 0 1em;
+      }
+      .spoiler-link:focus {
+        outline:0;
+        box-shadow: inset 0 0 1px rgba(0,0,0,0.3), inset 0 0 2px rgba(0,0,0,0.3);
+      }
+      .spoiler-link--active::before {
+        transform: rotate(90deg);
+      }
+      .spoilers-menu a:before ~ .down { margin-top: 90%;}
+
+      /* Нижний блок, не трогай */
+      .down {
+        width: 100% auto;
+        height: 50px;
+        background: #05030F;
+        padding: 2%;
+        margin-top: 2%;
+      }
+      .down p {
+        color: #31285E;
+        margin: 1px;
+      }
+
+      /* Для работы прокрутки вверх */
+      .scrollup{
+        width: 60px;
+        height: 60px;
+        position:fixed;
+        bottom: 50px;
+        right: 2%;
+        display:none;
+        text-indent:-9999px;
+        z-index: 9999;
+        background: url('img/icon_top.png') no-repeat;
+        background-size: 100%;
+      }
+
+      /* Для работы скролбра */
+      body::-webkit-scrollbar {
+        width: 12px;               /* ширина scrollbar */
+      }
+      body::-webkit-scrollbar-track {
+        background: #181619;        /* цвет дорожки */
+      }
+      body::-webkit-scrollbar-thumb {
+        background-color: #212161;    /* цвет плашки */
+        border-radius: 20px;       /* закругления плашки */
+      }
+
+      /* Для скрытия фонового видео */
+      .fon {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: #221F23;
+      }
+      .formation {
+        width: 100%;
+        height: 150px;
+        background: #221F23;
+        border-top: 20px solid #4F4A4A;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#" class="scrollup">Наверх</a>
+    <div class="head">
+      <video class="video1" loop autoplay muted preload>
+        <source src="video/2390438513326.mp4" type='video/mp4'>
+      </video>
+      <div class="head_mid animate__animated animate__fadeInUp wow">
+        <h1 class="zagolovok1"><font face="arial black">Подборка лучших бесплатных нейросетей</h1>
+        <p class="text1" style="border-left: 5px solid #212161; padding-left: 5%;"><font face="arial">За два года нейросети стали несколько умнее: картинки стали красивее, тексты — осмысленнее, а музыка — лучше. Здесь собраны нейросети 2023 года, которые могут сделать нашу жизнь проще и интереснее.</p>
+      </div>
+    </div>
+
+    <div class="fon">
+
+      <div class="formation"></div>
+
+      <div class="anchor animate__animated animate__fadeInLeft wow">
+        <a href="#anchor1" class="anchor_link">Что такое нейросети</a><a href="#anchor2" class="anchor_link">Список лучших</a><a href="#anchor3" class="anchor_link">Несколько новостей</a><a href="#anchor4" class="anchor_link">Музыка</a><a href="#anchor5" class="anchor_link">Итог</a>
+      </div>
+
+      <div class="DopText animate__animated animate__fadeInRight wow" id="anchor1">
+        <h1 class="zagolovok2"><font face="arial black">Что такое нейронная сеть?</font></h1>
+        <p class="text2 "><font face="arial">Под нейросетью понимается система нейронов, способная в совокупности обработать и воссоздать какие-то явления или объекты. Эта система обучается, действует последовательно, запоминает данные, умеет обрабатывать запросы и выводить информацию. По такому принципу работают нейронные связи в человеческом мозге, поэтому нейросети называют искусственным интеллектом или в сокращении "ИИ".</font></p>
+        <p class="text2"><font face="arial">Современные нейронные сети, созданные людьми, находятся под их полным контролем. Зачастую они выполняют утилитарные функции и представляют собой модели машинного обучения, созданные для выполнение нескольких конкретных задач. Разработчики отдают искусственному интеллекту данные, а он в ответ перерабатывает их нужным образом. Например, делает грустные лица на фото веселыми или подменяет загруженный голос на голос другого человека.</font></p>
+        <p class="text2"><font face="arial">Есть такое мнение, что нейросети заменят человеческий труд. Это мнение появилось в 1950-х.С появлением интернета, страх перед нейросетями начал только увеличиваться. Нейросети стали решать, кому давать кредит в банке, скидку в магазине, что должно быть в ленте новостей и рекомендациях к просмотру фильмов. В среднем каждый человек сталкивается с 1000 нейронных сетей за месяц. Лично я думал, что нейросети крайне не скоро смогут составить конкуренцию людям в том же создании артов, до тех пор пока не стал углубляться в эту тему.</font></p>
+      </div>
+
+  </div>
+
+      <div class="mid">
+        <div class="zagolovok3 animate__animated animate__fadeInUp wow" id="anchor2">
+          <h1 style="margin: 0 auto; color: white;">Список лучших</h1>
+          <p style="margin: 0 auto; font-size: 90%;">Ради понимания, что такое нейросети приведу несколько примеров нейросетей-художников, на их примере проще всего понять, как в ответ на обычный запрос можно получить шедевр.</p>
+        </div>
+        <section class="timeline">
+        ...
+        <div class="row">
+          <!-- 1 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInLeft wow" style="position: absolute;">
+            <div class="timeline-item">
+              <span class="timeline-item-header">ruDALL-E</span>
+              <span class="timeline-item-description">
+                  <p class="text3">Сервис от разработчиков «Сбера», поэтому он умеет генерировать картинки по описанию на русском языке.<br><br>Нейросеть генерирует одно изображение за раз. У итоговой картинки высокое разрешение, а вот с точностью генерации есть проблемы: нейросеть не всегда понимает, что от нее хотят. Например, во время тестового запроса ruDALL-E то «терял» Бэтмена, то никак не изображал хоть что-то похожее на Москву. Поэтому лучше отправлять запрос несколько раз подряд, чтобы добиться приемлемого результата.<br><br><a style="font-size: 120%;" class="link" target="_blank" href="https://rudalle.ru/">Перейти к нейросети →</a></p>
+              </span>
+            </div>
+          </div>
+          <!-- 1.2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInRight wow" style="width: 39%;">
+            <div class="timeline-item2">
+              <span class="timeline-item-description">
+                <div class="fotorama"
+                    data-width="100%"
+                    data-minheight="30%"
+                    data-autoplay="true"
+                  >
+                    <img src="img/1.png">
+                    <img src="img/2.jpg">
+                    <img src="img/3.jpg">
+                    <img src="img/4.jpg">
+                    <img src="img/5.jpg">
+                </div>
+              </span>
+            </div>
+          </div>
+          ...
+        </div>
+        <div class="row">
+          <!-- 2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInLeft wow" style="position: absolute; width: 40%; padding-left: 7%;">
+            <div class="timeline-item">
+              <span class="timeline-item-header">Starryai</span>
+              <span class="timeline-item-description">
+                <div class="fotorama"
+                  data-width="100%"
+                  data-minheight="30%"
+                  data-autoplay="true"
+                >
+                  <img src="img/6.png">
+                  <img src="img/7.png">
+                  <img src="img/8.png">
+                  <img src="img/9.png">
+                  <img src="img/10.png">
+                </div>
+              </span>
+            </div>
+          </div>
+          <!-- 2.2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInRight wow">
+            <div class="timeline-item2">
+              <span class="timeline-item-description">
+                <p class="text3">Нейросеть создает арты на основе текстового описания, но с дополнениями. Можно сразу задать стилистику изображения, прикрепить картинку-референс, добавить дополнительные параметры. Прогресс виден практически в прямом эфире: алгоритм на глазах превращает размытое нечто в полноценный арт.<br><br>Результаты получаются разные, от абстракций в духе ранних ИИ-моделей до качественных работ, почти неотличимых от настоящих картин. Готовое изображение можно пропустить через нейросеть еще раз или увеличить разрешение — за дополнительные кредиты.<br><br><a style="font-size: 120%;" class="link" target="_blank" href="https://starryai.com/">Перейти к нейросети →</a></p>
+              </span>
+            </div>
+          </div>
+          ...
+        </div>
+        <div class="row">
+          <!-- 3 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInLeft wow" style="position: absolute; margin-top: 4%;">
+            <div class="timeline-item">
+              <span class="timeline-item-header">Midjourney</span>
+              <span class="timeline-item-description">
+                <p class="text3">Это самый сильный конкурент всего мира, а так же одна из самых продвинутых систем на данный момент, которая преобразует текст в изображения. На данный момент запущен бета-тест с помощью бота Discord. Благодаря ему можно создать что вашему и его воображению угодно.<br><br>Всего для нового пользователя Discord бесплатно доступно 25 GPU-минут или круток, которые тратятся на примерно 25 действий (в том числе альтернативные варианты, улучшение разрешения и собственно создание новой серии картинок). Команда Midjourney объясняет это тем, что их детище популярно и эта популярность выходит боком для веб-серверов.<br><br>Сервис генерирует четыре варианта.С помощью нейросети получится создавать серии изображений в огромном количестве стилей и с разным уровнем детализации. Также система умеет объединять несколько картинок в одну.<br><br><a style="font-size: 120%;" class="link" target="_blank" href="https://www.midjourney.com/home/">Перейти к нейросети →</a></p>
+              </span>
+            </div>
+          </div>
+          <!-- 3.2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInRight wow">
+            <div class="timeline-item2">
+              <span class="timeline-item-description">
+                
+                <div class="fotorama"
+                  data-width="100%"
+                  data-minheight="30%"
+                  data-autoplay="true"
+                >
+                  <img src="img/11.png">
+                  <img src="img/12.png">
+                  <img src="img/13.png">
+                  <img src="img/14.png">
+                  <img src="img/15.png">
+                </div>
+              </span>
+            </div>
+          </div>
+          ...
+        </div>
+        <div class="row">
+          <!-- 4 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInLeft wow" style="position: absolute; width: 40%; padding-left: 7%; margin-top: 2%;">
+            <div class="timeline-item">
+              <span class="timeline-item-header">Ostagram</span>
+              <span class="timeline-item-description">
+                <div class="fotorama"
+                  data-width="100%"
+                  data-minheight="30%"
+                  data-autoplay="true"
+                >
+                  <img src="img/16.jpg">
+                  <img src="img/17.jpg">
+                  <img src="img/18.jpg">
+                  <img src="img/19.jpg">
+                  <img src="img/20.jpg">
+                </div>
+              </span>
+            </div>
+          </div>
+          <!-- 4.2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInRight wow">
+            <div class="timeline-item2">
+              <span class="timeline-item-description">
+                <p class="text3">Недавно в Open Source выложили предварительно обученную нейросеть, которая умеет генерировать изображения, взяв за основу образец стиля с другого изображения. Таким образом, из карандашного наброска можно создать художественный шедевр в стиле Ренуара или Моне. Технология основана на свёрточной нейросети, разработанной в прошлом году в университете Тюбингена. Она правдоподобно подделывает художественный стиль известных художников, принимая на вход для обработки любые фотографии.<br><br><a style="font-size: 120%;" class="link" target="_blank" href="https://www.ostagram.me/static_pages/lenta?last_days=1000&locale=en">Перейти к нейросети →</a></p>
+              </span>
+            </div>
+          </div>
+          ...
+        </div>
+        <div class="row">
+          <!-- 5 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInLeft wow" style="position: absolute; width: 40%; padding-left: 7%; margin-top: 8%;">
+            <div class="timeline-item">
+              <span class="timeline-item-description">
+                <p class="text3">Нейросети продолжают захватывать интернет. Так, очередной новый сервис от китайских разработчиков QQ возвращает тренд на обработку фото в аниме-стиле. Причём работает он очень быстро и точно.<br><br><a style="font-size: 120%;" class="link" target="_blank" href="https://rytr.me/">Перейти к нейросети →</a></p>
+              </span>
+            </div>
+          </div>
+          <!-- 5.2 элемент -->
+          <div class="col-12 col-sm-6 timeline-wrapper animate__animated animate__fadeInRight wow">
+            <div class="timeline-item2">
+              <span class="timeline-item-header">Different Dimension Me</span>
+              <span class="timeline-item-description">
+                <div class="fotorama"
+                  data-width="100%"
+                  data-minheight="30%"
+                  data-autoplay="true"
+                >
+                  <img src="img/21.jpeg">
+                  <img src="img/22.jpeg">
+                  <img src="img/23.jpeg">
+                  <img src="img/24.jpg">
+                  <img src="img/25.jpg">
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        </section>
+
+      </div>    
+
+  <div class="fon">
+
+      <div class="DopText animate__animated animate__fadeInUp wow" id="anchor3" style="margin-top: 0;">
+        <h1 class="zagolovok2"><font face="arial black">Почему в пример приведены именно нейросети художники?</font></h1>
+        <p class="text2"><font face="arial">Причин ровно две и обе банальны. Во-первых, именно фокусы с картинками привлекают к себе больше всего внимания. Некоторые слышали об AlphaGo, но с популярностью Prisma величайшему в мире игроку в го не сравниться. Решение сложных задач в области автоматизации как-то не попадают в сферу интересов массовой аудитории.</font></p>
+        <p class="text2"><font face="arial">Во-вторых, именно в области изображений обучать нейронные сети проще всего — существуют поистине гигантские библиотеки тегированных изображений вроде ImageNet, на которых можно быстро обучить нейросеть любого назначения.</font></p>
+        <p class="text2"><font face="arial">Ради разнообразия добавил несколько нейросетей.</font></p>
+      </div>
+
+      <div class="primer animate__animated animate__fadeInUp wow">
+
+        <div class="block">
+          <video class="video3" controls><source src="video/GauGAN2.mp4" type='video/ogg;'></video>
+          <p class="text3"><font face="arial">Фотографы - на завод :(<br>NVIDIA представила обновлённую нейросеть GauGAN2<br>Теперь программа генерирует еще более реалистичные изображения, понимая и применяя к изображению даже текстовую информацию.<br><br><br><a class="link" target="_blank" href="http://gaugan.org/gaugan2/">Посмотреть на нейросеть →</a></font></p>
+        </div>
+        <div class="block">
+          <video class="video3" controls><source src="video/noname.mp4" type='video/ogg;'></video>
+          <p class="text3"><font face="arial">На что способны бесплатные нейросети.<br>Текст к ролику написан и озвучен нейронками.<br><br><br><a class="link" target="_blank" href="https://rytr.me/">Посмотреть на генератор текста →</a><br><br><a class="link" target="_blank" href="https://cybervoice.io/ru">Посмотреть на генератор голоса →</a></font></p>
+        </div>
+        <div class="block">
+          <video class="video3" controls><source src="video/programmer_suicidal.mp4" type='video/ogg;'></video>
+          <p class="text3"><font face="arial">Нейросеть ChatGTP подключили к фреймворку React — это позволило собирать приложение «на лету», просто печатая словами то, что вам нужно «накодить».<br><br>Программисты уничтожили сами себя<br><br><a class="link" target="_blank" href="https://www.wand.earth/">Посмотреть на нейросеть →</a></font></p>
+        </div>
+
+        <nav class="spoilers-menu"><a class="spoiler-link" id="spoiler-link" style="width: 100%;" href="#sp1">Больше интересного</a></nav>
+          <div class="spoilers">
+            <div class="spoiler" id="sp1">
+              <div class="block" style="margin-left: 7%;">
+                <video class="video4" controls><source src="video/valle.mp4" type="video/ogg;"></video>
+                <p class="text3"><font face="arial">Microsoft показала, как работает их нейросеть VALL-E, которая может в точности скопировать голос и интонацию человека — для этого ей достаточно трёхсекундного образца.<br><br>Телефонные скамеры ставят класс<br><br><br><a class="link" target="_blank" href="https://3dnews.ru/1080026/iimodel-valle-ot-microsoft-imitiruet-golos-po-tryohsekundnomu-obraztsu" style="margin-top: 20%;">Посмотреть на нейросеть →</a></font></p>
+              </div>
+              <div class="block">
+                <video class="video4" controls><source src="video/IMG_4261.MP4" type="video/ogg;"></video>
+                <p class="text3"><font face="arial">Этих на завод следующей партией<br><br>NVIDIA показала убийцу монтажеров — нейросеть Text2LIVE, которая накладывает на видео любые эффекты, сформулированные при помощи текстового запроса.<br><br><br><a class="link" target="_blank" href="https://library.phygital.plus/details/text2live/r/recVvGntD7ytM2ujW" style="margin-top: 20%;">Посмотреть на нейросеть →</a></font></p>
+              </div>
+              <div class="block">
+                <video class="video4" controls><source src="video/2222.MP4" type="video/ogg;"></video>
+                <p class="text3"><font face="arial">Microsoft показала нейросеть 3D Avatar Diffusion, которая может построить простой 3D-аватар человека по единственной фотографии или минимальному текстовому описанию. Готовую модель можно редактировать – менять прическу и цвет волос, добавлять бороду, очки и так далее.<br><br><a class="link" target="_blank" href="https://3d-avatar-diffusion.microsoft.com/">Посмотреть сайт проекта →</a></font></p>
+              </div>
+              <div class="block2">
+                <iframe style="float: left; margin-right: 2%;" width="560" height="315" src="https://www.youtube.com/embed/W4bzC3RRCwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Маленькая история</h2>
+                <p class="text4"><font face="arial">После сделанного домашнего задания по физике недолго думая пошёл на YouTube смотреть недавно вышедшее<i>(неделю назад)</i> видео по майнкрафту, в надежде немного сдеградировать. А что получил? Мне начали рассказывать про то как устроенны нейросети, где они используются, как они нам угрожают и самое интересное, никак не ожидал от видео по майнкрафту рассказ про "Теорию Мёртвого Интернета". Ну, там смотреть надо, объяснять в тексту не очень хочется.</font></p>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="DopText" style="height: 30rem; padding-bottom: 2%;" id="anchor4">
+        <iframe class="animate__animated animate__fadeInLeft wow" frameborder="0" style="border:none;width:50%;height:450px;float:left;" width="50%" height="450" src="https://music.yandex.ru/iframe/#album/3558837">Слушайте <a href='https://music.yandex.ru/album/3558837'>404</a> — <a href='https://music.yandex.ru/artist/4445922'>Нейронная оборона</a> на Яндекс Музыке</iframe>
+        <div class="animate__animated animate__fadeInRight wow" style="float:left; width: 40%; margin-left: 2%;">
+          <h2><font face="arial black">На замену музыкантам</font></h2>
+          <p class="text2"><font face="arial">Искусственным интеллектом как помощником и соавтором впервые заинтересовались академические композиторы: первопроходцем тут считается великий авангардист Янис Ксенакис. Технологии развивались — в девяностые появились алгоритмы для генерации джазовых соло и даже целых аранжировок. А расцвет нейросетей привел к тому, что сгенерированная компьютером музыка рассматривается как перспективное направление: всевозможные инструментальные композиции «для бега» или «для сна» уже есть в стриминговых сервисах.</font></p>
+          <p class="text2"><font face="arial">Далеко за примерами ходить не надо: недавно специалисты Яндекса поставили весьма показательный эксперимент, записав неофициальный музыкальный альбом, текст песен которого полностью создан нейросетью и стилизован под творчество Егора Летова и группы «Гражданская оборона».</font></p>
+        </div>
+      </div>
+
+      <div class="DopText animate__animated animate__fadeInUp wow" id="anchor5">
+        <h2><font face="arial black">В какую сторону мы катимся</font></h2>
+        <p class="text2"><font face="arial">Катимся мы примерно туда же, куда катился мир во времена Промышленной революции. Новые средства производства сделают ненужными миллионы рабочих мест. Начнется все с переводчиков (<i>дайте только обучить нейросеть на достаточном объеме синхронизированных текстов</i>), сотрудников колл-центров (<i>распознавание речи и гибкие диалоговые скрипты</i>), охранников (<i>распознавание лиц и нетипичного поведения</i>), водителей (<i>да-да, те самые автопилоты</i>) и так далее.</font></p>
+        <p class="text2"><font face="arial"></font>Со временем все больше профессий будут вовлекаться в воронку автоматизации. Надо быть очень самоуверенным человеком, чтобы полагать, будто это не коснется и тебя. Или нас.</p>
+        <p class="text2"><font face="arial"></font>Что нас тогда ждет? Вероятно, безусловный базовый доход, массовая безработица и ожидание, пока нейросети не разовьются настолько, чтобы полностью взять на себя заботу о своих некогда таких самостоятельных создателях.</p>
+        <p class="text2"><font face="arial"></font>А сейчас нам остаётся только сидеть сложа руки и наблюдать как машина булит людей.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1v5b5ufT4rc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+      <div class="down">
+        <p><font face="arial">Сайт студента первого курса НАТК</font></p>
+        <p><font face="arial">Сделан в спешке для сдачи в феврале</font></p>
+        <p><font face="arial">Шатровым Егором</font></p>
+      </div>
+
+    </div>
+
+  </body>
+</html>
